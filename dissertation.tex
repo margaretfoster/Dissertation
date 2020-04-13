@@ -1,0 +1,194 @@
+\documentclass[]{dukedissertation}
+%\documentclass[economy,twoside,bind]{dukedissertation}
+% Use the second for a single-spaced copy suitable for duplex printing
+% and binding.
+
+% Other useful options (there are more options documented in Chapter 2):
+%  * draft -- don't actually include images, print a black bar on overful
+%             hboxes
+%  * MS    -- Format for a Master's Thesis.  No UMI abstract page, some 
+%             textual changes to title page.  
+
+
+% Useful packages for dissertation writing:
+\usepackage{amsmath, amssymb, amsfonts, amsthm}
+\usepackage{graphicx}
+
+\usepackage{color}
+\usepackage{bm}
+\usepackage{subfigure}
+\usepackage{graphicx}
+\graphicspath{ {./Pictures/} }
+\usepackage{mathabx}
+\usepackage{multirow}
+\usepackage{setspace}
+%%\usepackage{natbib} bibliography package in the template
+\usepackage[style=authoryear,autocite=inline,backend=bibtex]{biblatex} %note this is not the citation
+%  reference package in the template. If there is a problem, go bck to "cite"%
+\addbibresource{./Bibliography/CentralizedBibliography.bib} % Syntax for version >= 1.2
+% \usepackage{cite}  % If you include this, hyperlink cites will
+                     % break.  It's nice to use this package if your bibstyle
+							% sorts entries by order-of-use, rather than
+							% alphabetically (as plain does).
+\usepackage{dirtytalk} %I added to the package
+							
+%Theorem, Lemma, etc. environments
+\newtheorem{theorem}{Theorem}%[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{result}[theorem]{Result}
+
+% Personal commands and abbreviations.
+%Define and personal commands here
+
+%Graphics Path to find your pictures
+\graphicspath{{./Pictures/}}
+
+
+%-----------------------------------------------------------------------------%
+% PREAMBLE 
+%-----------------------------------------------------------------------------%
+\author{Margaret Jenkins Foster}
+\title{Between a Hammer and an Anvil: Bottom-Up Organizational Transformation}
+\supervisor{David A. Siegel}
+\department{Political Science} % Appears as Department of \department
+% Declare dissertation subject used on UMI abstract page.  List of
+% categories: http://dissertations.umi.com/duke/subject_categories.html
+%\subject{[Your Subject Here]}
+
+\date{2020} % Anything but the year is ignored.
+
+% Copyright text.  If undefined, default is 'All rights reserved'
+% (Example sets the text to a hyperlinked Creative Commons Licence)
+\copyrighttext{ All rights reserved except the rights granted by the\\
+   \href{http://creativecommons.org/licenses/by-nc/3.0/us/}
+        {Creative Commons Attribution-Noncommercial Licence}
+}
+
+% Committee Members other than supervisor.  No more than five beyond the
+% supervisor allowed.
+\member{Peter Feaver}
+\member{Livia Schubiger}
+\member{Laia Balcells}
+\member{Jacob Shapiro}
+%-----------------------------------------------------------------------------%
+
+
+%-----------------------------------------------------------------------------%
+% HYPERREF: plain black hypertext references for ref's and cite's.
+%-----------------------------------------------------------------------------%
+\usepackage[pdftex, pdfusetitle, plainpages=false, 
+				letterpaper, bookmarks, bookmarksnumbered,
+				colorlinks, linkcolor=black, citecolor=black,
+	         filecolor=black, urlcolor=black]
+				{hyperref}
+
+\begin{document}
+
+%----------------------------------
+%  Custom commands for formal model write-up
+%---------------------------------
+
+\newcommand{\ps}[1]{\ensuremath{P(R_{R}){#1}}} %% Prob of success
+\newcommand{\rgoal}[1]{\ensuremath{G^{#1}_{R}}} %% post-socialization recruit  -goal
+\newcommand{\egoal}[1]{\ensuremath{E(G^{#1}_{R}})} %% Expected value of socialization
+\newcommand{\diff}{\ensuremath{\Delta_{R}}} %% Diff between pre and post-socialization goal
+\newcommand{\act}[1]{\ensuremath{a^{*}_{#1}}} %% equilibrium action proposal
+\newcommand{\cost}[1]{\ensuremath{C_{a}{#1}}} %% action cost
+\newcommand{\infocost}[1]{\ensuremath{C_{i}}{#1}} %% information cost
+\newcommand{\socialcost}[1]{\ensuremath{C_{s}}{#1}} %% socializing cost
+\newcommand{\utilg}{\ensuremath{U_{G}}} %% Recruit's utility of being in a group
+\newcommand{\lgoal}[1]{\ensuremath{G^{#1}_{L}}} %% leader's goal
+\newcommand{\costfrac}[1]{\ensuremath{\frac{\cost{#1}}{\ps{#1}}}}
+\newcommand{\de}{\ensuremath{\delta}}
+\newcommand{\al}{\ensuremath{\alpha}}
+\newcommand{\aone}{\ensuremath{G^{0}_{L}}}
+\newcommand{\atwo}[2]{\ensuremath{1+\rgoal{#1,1} - \costfrac{#2}}}  
+\newcommand{\athree}[2]{\ensuremath{\costfrac{#2} + \rgoal{#1,1} - 1}}
+\newcommand{\gammacust}{\ensuremath{(1-\costfrac{})}}
+ \newcommand{\lgammacust}{\ensuremath{\frac{\ps{}- \cost{}}{\ps{} + (1-\alpha)}}}
+ 
+%-----------------------------------------------------------------------------%
+% TITLE PAGE -- provides UMI abstract title page & copyright if appropriate
+%-----------------------------------------------------------------------------%
+\maketitle
+
+%-----------------------------------------------------------------------------%
+% ABSTRACT -- included file should start with '\abstract'.
+%-----------------------------------------------------------------------------%
+\include{{./Abstract/abstract}}
+
+%-----------------------------------------------------------------------------%
+% DEDICATION -- OPTIONAL.  Put the text inside the braces.
+%               (Long 'dedications' probably belong in the acknowledgements)
+%-----------------------------------------------------------------------------%
+\dedication{For my grandmothers, who had fewer opportunities for intellectual fulfillment}
+
+%-----------------------------------------------------------------------------%
+% FRONTMATTER -- ToC is required, LoT and LoF are required if you have any
+% tables or figures, respectively. List of Abbreviations and Symbols is 
+% optional.
+%-----------------------------------------------------------------------------%
+\tableofcontents % Automatically generated
+\listoftables	% If you have any tables, automatically generated
+\listoffigures	% If you have any figures, automatically generated
+%\include{{./Abbreviations/listofabbr}} % List of Abbreviations. Start file with '\abbreviations'
+
+%-----------------------------------------------------------------------------%
+% ACKNOWLEDGEMENTS -- included file should start with '\acknowledgements'
+%-----------------------------------------------------------------------------%
+\include{{./Acknowledgements/acknowledgements}}
+
+%==============================================================================
+%-----------------------------------------------------------------------------%
+%
+% MAIN BODY OF PAPER
+%
+%
+%-----------------------------------------------------------------------------%
+\include{{./Chapter1-Introduction/Introduction}}
+\include{{./Chapter2-Theory/GeneralTheory}} % Theory in General
+\include{{./Chapter3-MilitantSpecific/MilitantApplication}} %How does the theory influence our understanding of militant groups?
+\include{{./Chapter4-Cases/Nusra}}
+\include{{./Chapter5-TextAnalysis/AQAP}}
+\include{{./Chapter6-Survey/NPSurvey}}
+\include{{./Chapter1-Introduction/Conclusion}}
+%==============================================================================
+
+%-----------------------------------------------------------------------------%
+% APPENDICES -- OPTIONAL. These are just chapters enumerated by Appendix A,
+%                Appendix B, Appendix C...
+%-----------------------------------------------------------------------------%
+\appendix
+\include{{./Appendix1/FormalModelAppendix}} 
+\include{{./Appendix1/AQAP_TextAppendix}}
+\include{{./Appendix1/SurveyAppendix}}
+%-----------------------------------------------------------------------------%
+% BIBLIOGRAPHY -- uncomment \nocite{*} to include items in 'mybib.bib' file
+% that aren't cited in the text.  Change the style to match your
+% discipline's standards.  Of course, if your bibliography file isn't called
+% 'mybib.bib' you might want to change that here too :)
+%-----------------------------------------------------------------------------%
+%\nocite{*} - if you use this it will put EVERYTHING in your .bib file into the references even if you don't cite it in the text
+%\bibliographystyle{./Bibliography/apsr2006} %Formats bibliography
+\cleardoublepage
+\begingroup
+\setstretch{1.0}
+\addcontentsline{toc}{chapter}{Bibliography} %adds Bibliography to your table of contents
+\printbibliography
+\endgroup
+
+%\normalbaselines %Fixes spacing of bibliography
+
+%\printbibliography %% Prints using the biblatex package, not the natbib originally with the package
+%-----------------------------------------------------------------------------%
+
+%-----------------------------------------------------------------------------%
+% BIOGRAPHY -- Start file with '\biography'.  Mandatory for Ph.D.
+%-----------------------------------------------------------------------------%
+%\include{{./Biography/biography}}
+
+%-----------------------------------------------------------------------------
+% You're done :)
+\end{document}
